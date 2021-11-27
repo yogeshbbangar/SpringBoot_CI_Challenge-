@@ -20,7 +20,7 @@
   		<repository>
     		 <id>github</id>       
     		<name>Releases</name>           
-		<url>https://maven.pkg.github.com/yogesh6717/SpringBoot_CI_Challenge-</url> 
+		<url>${user.url}</url> 
   		</repository>
 	</distributionManagement>
 	<dependencies>
