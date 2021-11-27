@@ -32,7 +32,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           mv ./settings.xml .mvn/wrapper
-          mvn -B deploy -Duser.url=https://maven.pkg.github.com/yogesh6717/SpringBoot_CI_Challenge- -DskipTests -s .mvn/wrapper/settings.xml --file pom.xml
+          ./mvnw clean deploy -B -Duser.url=https://maven.pkg.github.com/yogesh6717/SpringBoot_CI_Challenge- -DskipTests -s .mvn/wrapper/settings.xml --file pom.xml
           
 #       - name: Create GitHub release
 #         uses: elgohr/Github-Release-Action@master
