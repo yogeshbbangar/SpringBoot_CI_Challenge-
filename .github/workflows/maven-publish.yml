@@ -30,7 +30,7 @@ jobs:
       - name: Update version from commandline
         run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
       - name: Publish to GitHub Packages
-        run: mvn -B deploy -Duser.url=https://yogesh6717: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@maven.pkg.github.com/yogesh6717/SpringBoot_CI_Challenge- -DskipTests --file pom.xml
+        run: mvn -B deploy -Duser.url=https://maven.pkg.github.com/yogesh6717/SpringBoot_CI_Challenge-/:_authToken=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 -DskipTests --file pom.xml
           
 #       - name: Create GitHub release
 #         uses: elgohr/Github-Release-Action@master
