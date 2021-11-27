@@ -32,7 +32,8 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           mv ./settings.xml .mvn/wrapper
-          chmod +x mvnw ./mvnw clean deploy -s .mvn/wrapper/settings.xml --file pom.xml
+          chmod +x mvnw
+          ./mvnw clean deploy -DskipTests -s .mvn/wrapper/settings.xml --file pom.xml
           
 #       - name: Create GitHub release
 #         uses: elgohr/Github-Release-Action@master
