@@ -32,7 +32,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: mvn -B deploy -DskipTests --file pom.xml
         env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           GITHUB_TOKEN: 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
           
 #       - name: Create GitHub release
 #         uses: elgohr/Github-Release-Action@master
