@@ -29,3 +29,15 @@ jobs:
       - run: echo "Got the tag name ${{ steps.tag_version.outputs.tag }}"
       - name: Update version from commandline
         run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
+      - name: Publish to GitHub Packages
+        run: mvn -B deploy -DskipTests --file pom.xml
+        env:
+           GITHUB_TOKEN: ${{ github.token }}
+          
+#       - name: Create GitHub release
+#         uses: elgohr/Github-Release-Action@master
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+#         with: 
+#           tag_name: ${{github.run_number}}
+#           release_name: Release ${{github.run_number}} 
