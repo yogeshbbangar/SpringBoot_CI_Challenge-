@@ -16,6 +16,13 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<distributionManagement>
+  		<repository>
+    		 <id>github</id>       
+    		<name>Releases</name>           
+		<url>https://maven.pkg.github.com/yogesh6717/SpringBoot_CI_Challenge-</url> 
+  		</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
