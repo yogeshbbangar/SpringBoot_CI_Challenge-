@@ -34,7 +34,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           cp ./settings.xml ~/.m2/settings.xml
-          mvn deploy -DskipTests -s --file pom.xml
+          mvn deploy -DskipTests --file pom.xml
   #          chmod +x mvnw
           
       - name: Create GitHub release
