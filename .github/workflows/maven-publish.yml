@@ -29,17 +29,16 @@ jobs:
       - run: echo "Got the tag name ${{ steps.tag_version.outputs.tag }}"
       - name: Update version from commandline
         run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
-  #    - name: Test publish 
-   #     run: mvn deploy -DskipTests -Dregistry=https://maven.pkg.github.com/yogesh6717/SpringBoot_CI_Challenge- -Dtoken=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
-      - name: Publish to GitHub Packages
-        run: |
-          cp ./settings.xml ~/.m2/settings.xml
-          mvn deploy -DskipTests --file pom.xml
-  #          chmod +x mvnw
-          
       - name: Create GitHub release
         uses: elgohr/Github-Release-Action@master
         env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
          args: ${{ steps.tag_version.outputs.tag }}
+      - name: Publish to GitHub Packages
+        run: |
+          mvn --settings ./settings.xml --file pom.xml deploy -DskipTests
+        #  mvn deploy -DskipTests --file pom.xml
+        #cp ./settings.xml ~/.m2/settings.xml
+          
+
