@@ -27,8 +27,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "Got the tag name ${{ steps.tag_version.outputs.tag }}"
-      - name: Update version from commandline
-        run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
+ #     - name: Update version from commandline
+ #       run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
       - name: Publish to GitHub Packages
         run: |
           mv ./settings.xml .mvn/wrapper
