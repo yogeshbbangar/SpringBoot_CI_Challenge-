@@ -27,18 +27,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "Got the tag name ${{ steps.tag_version.outputs.tag }}"
- #     - name: Update version from commandline
- #       run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
+      - name: Update version from commandline
+        run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
       - name: Publish to GitHub Packages
         run: |
           mv ./settings.xml .mvn/wrapper
           chmod +x mvnw
-          ./mvnw clean deploy -DskipTests -s .mvn/wrapper/settings.xml --file pom.xml
+          ./mvnw deploy -DskipTests -s .mvn/wrapper/settings.xml --file pom.xml
           
-#       - name: Create GitHub release
-#         uses: elgohr/Github-Release-Action@master
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-#         with: 
-#           tag_name: ${{github.run_number}}
-#           release_name: Release ${{github.run_number}} 
+      - name: Create GitHub release
+        uses: elgohr/Github-Release-Action@master
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: 
+           tag_name: ${{ steps.tag_version.outputs.tag }}
+           release_name: Release ${{ steps.tag_version.outputs.tag }} 
