@@ -30,7 +30,7 @@ jobs:
       - name: Update version from commandline
         run: mvn -B versions:set -DnewVersion=${{ steps.tag_version.outputs.tag }} -DgenerateBackupPoms=false
       - name: Create GitHub release
-        uses: elgohr/Github-Release-Action@master
+        uses: elgohr/Github-Release-Action@v4
         env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
